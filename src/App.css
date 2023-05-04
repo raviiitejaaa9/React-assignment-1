@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: 'Roboto';
 }
 
 body {
@@ -66,6 +67,14 @@ body {
   color: #ffffff;
   padding: 10px;
   outline: none;
+}
+.sec-2 {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 76%;
+  width: 90%;
 }
 
 .card {

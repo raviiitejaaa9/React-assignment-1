@@ -2,7 +2,10 @@ import './App.css'
 
 import {Component} from 'react'
 
+import HistoryComponent from './components/HistoryComponent'
+
 // These are the list used in the application. You can move them to any component needed.
+
 const initialHistoryList = [
   {
     id: 0,
@@ -100,6 +103,8 @@ class App extends Component {
 
     const {id, timeAccessed, logo, title, domainUrl} = historyList[0]
 
+    // this.setState({historyList: filteredList})
+
     return (
       <div className="bg-container">
         <navbar className="top-sec">
@@ -124,19 +129,13 @@ class App extends Component {
             />
           </div>
         </navbar>
-
-        <ul className="card">
-          <li className="list-el">
-            <div>
-              <p> {timeAccessed} </p>
-              <div className="histort-item-container">
-                <img src={logo} />
-                <p> {title} </p>
-                <p> {domainUrl} </p>
-              </div>
-            </div>
-          </li>
-        </ul>
+        <div className="sec-2">
+          <ul className="card">
+            {historyList.map(eachItem => (
+              <HistoryComponent eachHistoryItem={eachItem} key={eachItem.id} />
+            ))}
+          </ul>
+        </div>
       </div>
     )
   }

@@ -1,0 +1,55 @@
+* {
+  font-family: 'Roboto';
+}
+
+.list-el {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history-item-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 400px;
+}
+
+.logo-img {
+  width: 26px;
+  height: 26px;
+  margin-right: 20px;
+}
+
+.title {
+  margin-right: 10px;
+}
+
+.domain-url {
+  margin-right: 10px;
+}
+
+.del-img {
+  width: 26px;
+  height: 26px;
+}
+
+/* {historyList.map(eachItem => (
+              <HistoryComponent eachHistoryItem={eachItem} key={eachItem.id} />
+            ))} 
+
+            <div className="sec-2">
+          <ul className="card">
+            <HistoryComponent />
+          </ul>
+        </div>
+
+        const filteredList = historyList.map(eachItem =>
+      eachItem.title.toLowerCase.includes(searchInput.toLowerCase()),
+    )
+    console.log(filteredList)
+
+            */
