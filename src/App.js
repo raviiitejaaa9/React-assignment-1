@@ -86,6 +86,7 @@ const initialHistoryList = [
 
 class App extends Component {
   state = {
+    count: initialHistoryList.length,
     searchInput: '',
     historyList: initialHistoryList,
   }
@@ -98,12 +99,37 @@ class App extends Component {
     this.setState({searchInput: inputValue})
   }
 
+  toDeleteHistory = id => {
+    console.log(id)
+    const {historyList} = this.state
+    const deletedList = historyList.filter(eachItem => eachItem.id !== id)
+
+    this.setState({historyList: deletedList})
+    this.setState(prevState => ({count: prevState.count - 1}))
+  }
+
   render() {
-    const {searchInput, historyList} = this.state
+    let emptyHistoryEl
+    const {count, searchInput, historyList} = this.state
+
+    if (historyList.length === 0) {
+      emptyHistoryEl = <p> There is no history to show </p>
+    } else {
+      emptyHistoryEl = null
+    }
+
+    console.log(searchInput)
+    // console.log(historyList)
 
     const {id, timeAccessed, logo, title, domainUrl} = historyList[0]
 
     // this.setState({historyList: filteredList})
+    const filteredList = historyList.filter(eachItem =>
+      eachItem.title.toLowerCase().includes(searchInput.toLowerCase()),
+    )
+
+    // console.log(filteredList)
+    console.log(count)
 
     return (
       <div className="bg-container">
@@ -131,9 +157,14 @@ class App extends Component {
         </navbar>
         <div className="sec-2">
           <ul className="card">
-            {historyList.map(eachItem => (
-              <HistoryComponent eachHistoryItem={eachItem} key={eachItem.id} />
+            {filteredList.map(eachItem => (
+              <HistoryComponent
+                eachHistoryItem={eachItem}
+                key={eachItem.id}
+                toDeleteHistory={this.toDeleteHistory}
+              />
             ))}
+            {emptyHistoryEl}
           </ul>
         </div>
       </div>

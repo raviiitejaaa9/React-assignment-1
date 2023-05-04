@@ -37,6 +37,11 @@
   height: 26px;
 }
 
+.button {
+  background-color: #ffffff;
+  border: none;
+}
+
 /* {historyList.map(eachItem => (
               <HistoryComponent eachHistoryItem={eachItem} key={eachItem.id} />
             ))} 

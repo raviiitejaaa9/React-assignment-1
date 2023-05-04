@@ -1,21 +1,33 @@
 import './index.css'
 
 const HistoryComponent = props => {
-  const {eachHistoryItem} = props
-  const {timeAccessed, logoUrl, title, domainUrl} = eachHistoryItem
+  const {eachHistoryItem, toDeleteHistory} = props
+  const {id, timeAccessed, logoUrl, title, domainUrl} = eachHistoryItem
+
+  const onClickDelete = () => {
+    console.log('delete triggered')
+    toDeleteHistory(id)
+  }
   return (
     <li className="list-el">
       <p> {timeAccessed} </p>
       <div className="history-item-container">
-        <img src={logoUrl} className="logo-img" alt="app logo" />
+        <img src={logoUrl} className="logo-img" alt="domain logo" />
         <p className="title"> {title} </p>
         <p className="domain-url"> {domainUrl} </p>
       </div>
-      <img
-        src="https://assets.ccbp.in/frontend/react-js/delete-img.png"
-        alt="delete"
-        className="del-img"
-      />
+      <button
+        type="button"
+        data-testid="delete"
+        className="button"
+        onClick={onClickDelete}
+      >
+        <img
+          src="https://assets.ccbp.in/frontend/react-js/delete-img.png"
+          alt="delete"
+          className="del-img"
+        />
+      </button>
     </li>
   )
 }
