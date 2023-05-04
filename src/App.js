@@ -127,7 +127,14 @@ class App extends Component {
 
         <ul className="card">
           <li className="list-el">
-            <p> {timeAccessed} </p>
+            <div>
+              <p> {timeAccessed} </p>
+              <div className="histort-item-container">
+                <img src={logo} />
+                <p> {title} </p>
+                <p> {domainUrl} </p>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
